@@ -1,0 +1,24 @@
+# version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./automacorp
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./RoomReservationFrontEnd/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8181:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
